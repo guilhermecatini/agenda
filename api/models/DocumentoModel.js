@@ -3,17 +3,17 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const _telefoneSchema = {
-  
+const _documentoSchema = {
+
   _idEmpresa: {type: Schema.Types.ObjectId, ref:'empresa'},
   _idUsuario: {type: Schema.Types.ObjectId, ref:'usuario'},
   _idPessoa: {type: Schema.Types.ObjectId, ref:'pessoa'},
-  
+
   descricao: String,
   numero: String
 }
 
-const TelefoneSchema = new Schema(_schema, { versionKey: false })
-const TelefoneModel = mongoose.model('telefone', TelefoneSchema)
+const DocumentoSchema = new Schema(_schema, { versionKey: false })
+const DocumentoModel = mongoose.model('documento', DocumentoSchema)
 
-module.exports = TelefoneModel
+module.exports = DocumentoModel

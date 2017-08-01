@@ -3,25 +3,13 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const _schema = {
+const _usuarioschema = {
   
-  nome_completo: {
-    type: String
-  },
-
-  usuario: {
-    type: String,
-    required: true,
-    index: {
-      unique: true
-    }
-  },
-
-  senha: {
-    type: String,
-    required: true
-  }
-
+  _idEmpresa: {type: Schema.Types.ObjectId, ref:'empresa'},
+  email: String,
+  nome: String,
+  login: String,
+  senha: String
 }
 
 const UsuarioSchema = new Schema(_schema, { versionKey: false })

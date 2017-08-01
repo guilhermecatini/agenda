@@ -5,6 +5,8 @@ const Schema = mongoose.Schema
 
 const _etapaSchema = {
   
+  _idTrabalho: {type: Schema.Types.ObjectId, ref:'trabalho'},
+
   descricao: String,
   observacao: String
 }
