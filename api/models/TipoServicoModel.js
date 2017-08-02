@@ -6,9 +6,9 @@ const Schema = mongoose.Schema
 const _tipoServicoSchema = {
   
   descricao: String,
-  tempoMedio: Number,
-  tempoPreparo: Number,
-  tempoEncerramento: Number
+  tempoMedio: Date,
+  tempoPreparo: Date,
+  tempoEncerramento: Date
 
 }
 

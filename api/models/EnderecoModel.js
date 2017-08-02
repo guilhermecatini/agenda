@@ -16,8 +16,7 @@ const _enderecoSchema = {
   complemento: String,
   bairro: String,
   cidade: String,
-  estado: String,
-  pais: String
+  estado: String
 }
 
 const EnderecoSchema = new Schema(_schema, { versionKey: false })
