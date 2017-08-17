@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/agenda', { useMongoClient: true })
 
 const usuarios = require('./api/routes/UsuarioRoutes')
+const EmpresaAPI = require('./api/routes/EmpresaRoutes')
 
 // const index = require('./routes/index')
 // const users = require('./routes/users')
@@ -27,6 +28,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/v1/usuarios', usuarios)
+app.use('/api/v1/Empresa', EmpresaAPI)
 
 //app.use('/', index)
 //app.use('/users', users)
