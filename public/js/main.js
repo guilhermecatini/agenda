@@ -5,38 +5,31 @@ const app = angular.module('AppAgenda', ['ui.router', 'ngMask'])
 
 app.config(function($httpProvider, $stateProvider, $urlRouterProvider){
 
+ $stateProvider
+ .state('menu', {
+    templateUrl: './views/menu.html'
+  })
 
-  if ( 1 == 1 ) {
+ .state('menu.home', {
+    url: '/home',
+    templateUrl: './views/home.html'
+  })
 
-   $stateProvider
-
-   .state('UsuariosNovo', {
-    url: '/usuarios/novo',
-    templateUrl: './views/frm_usuarios.html',
-    controller: 'UsuarioController',
+  .state('menu.frmEmpresa', {
+    url: '/Empresa/?_id',
+    params: { _id: null },
+    templateUrl: './views/frm_empresa.html',
+    controller: 'EmpresaController',
     controllerAs: 'vm'
   })
 
-   .state('UsuariosAlterarId', {
-    url: '/usuarios/alterar/:_id',
-    templateUrl: './views/frm_usuarios.html',
-    controller: 'UsuarioController',
+  .state('menu.cnsEmpresa', {
+    url: '/Empresa/Listar',
+    templateUrl: './views/cns_empresa.html',
+    controller: 'EmpresaController',
     controllerAs: 'vm'
   })
 
-   .state('Usuarios', {
-    url: '/usuarios',
-    templateUrl: './views/cns_usuarios.html',
-    controller: 'UsuarioController',
-    controllerAs: 'vm'
-  })
-
-
-
-
- }
-
-
- $urlRouterProvider.otherwise('/usuarios')
+ $urlRouterProvider.otherwise('/home')
 
 })
