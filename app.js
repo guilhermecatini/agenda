@@ -7,8 +7,9 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/agenda', { useMongoClient: true })
 
-const UsuarioAPI = require('./api/routes/UsuarioRoutes')
-const EmpresaAPI = require('./api/routes/EmpresaRoutes')
+const UsuarioAPI     = require('./api/routes/UsuarioRoutes')
+const EmpresaAPI     = require('./api/routes/EmpresaRoutes')
+const TipoServicoAPI = require('./api/routes/TipoServicoRoutes')
 
 // const index = require('./routes/index')
 // const users = require('./routes/users')
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/v1/Usuario', UsuarioAPI)
 app.use('/api/v1/Empresa', EmpresaAPI)
+app.use('/api/v1/TipoServico', TipoServicoAPI)
 
 //app.use('/', index)
 //app.use('/users', users)

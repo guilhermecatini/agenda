@@ -6,13 +6,13 @@ const Schema = mongoose.Schema
 const _tipoServicoSchema = {
   
   descricao: String,
-  tempoMedio: Date,
-  tempoPreparo: Date,
-  tempoEncerramento: Date
+  tempoMedio: Number,
+  tempoPreparo: Number,
+  tempoEncerramento: Number
 
 }
 
-const TipoServicoSchema = new Schema(_schema, { versionKey: false })
-const TipoServicoModel = mongoose.model('tipoServico', TipoServicoSchema)
+const TipoServicoSchema = new Schema(_tipoServicoSchema, { versionKey: false })
+const TipoServicoModel = mongoose.model('tipo_servico', TipoServicoSchema)
 
 module.exports = TipoServicoModel

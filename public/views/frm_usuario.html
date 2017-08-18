@@ -8,7 +8,7 @@
 			</div>
 		</div>
 
-		<form name="form_empresa" onsubmit="return false">
+		<form name="form_usuario" onsubmit="return false">
 
 			<div class="row" data-ng-init="vm.ListarEmpresas()">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -19,23 +19,23 @@
 
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="txtNomeFantasia">Nome Completo</label>
-					<input type="text" class="form-control" id="txtNomeFantasia" required="" data-ng-model="vm.Usuario.nome">
+					<label for="txtNomeCompleto">Nome Completo</label>
+					<input type="text" class="form-control" id="txtNomeCompleto" required="" data-ng-model="vm.Usuario.nome">
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="txtRazaoSocial">E-Mail</label>
-					<input type="text" class="form-control" id="txtRazaoSocial" required="" data-ng-model="vm.Usuario.email">
+					<label for="txtEmail">E-Mail</label>
+					<input type="text" class="form-control" id="txtEmail" required="" data-ng-model="vm.Usuario.email">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="txtNomeFantasia">Login</label>
-					<input type="text" class="form-control" id="txtNomeFantasia" required="" data-ng-model="vm.Usuario.login">
+					<label for="txtLogin">Login</label>
+					<input type="text" class="form-control" id="txtLogin" required="" data-ng-model="vm.Usuario.login">
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="txtRazaoSocial">Senha</label>
-					<input type="text" class="form-control" id="txtRazaoSocial" required="" data-ng-model="vm.Usuario.senha">
+					<label for="txtSenha">Senha</label>
+					<input type="text" class="form-control" id="txtSenha" required="" data-ng-model="vm.Usuario.senha">
 				</div>
 			</div>
 

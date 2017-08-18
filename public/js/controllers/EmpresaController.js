@@ -25,6 +25,9 @@ app.controller('EmpresaController', function(EmpresaService, $stateParams) {
 	vm.Gravar = function() {
 		EmpresaService.Gravar(vm.Empresa)
 		.then(function(res){
+			if (res.data._id) {
+				vm.Empresa = res.data
+			}
 		})
 	}
 

@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h4>Cadastro de Tipo de Serviço</h4>
+				<hr>
+			</div>
+		</div>
+
+		<form name="form_tipo_servico" onsubmit="return false">
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<label for="txtDescricao">Descrição</label>
+					<input type="text" class="form-control" id="txtDescricao" required="" data-ng-model="vm.TipoServico.descricao">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<label for="txtTempoMedio">Tempo Médio</label>
+					<input type="text" class="form-control" id="txtTempoMedio" required="" data-ng-model="vm.TipoServico.tempoMedio">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<label for="txtTempoPreparo">Tempo de Preparo</label>
+					<input type="text" class="form-control" id="txtTempoPreparo" required="" data-ng-model="vm.TipoServico.tempoPreparo">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<label for="txtTempoEncerramento">Tempo de Encerramento</label>
+					<input type="text" class="form-control" id="txtTempoEncerramento" required="" data-ng-model="vm.TipoServico.tempoEncerramento">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<hr>
+					<button type="button" class="btn btn-default" data-ng-click="vm.Gravar()">Gravar</button>
+					<button type="button" class="btn btn-default" data-ui-sref="menu.cnsTipoServico">Voltar</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+</div>

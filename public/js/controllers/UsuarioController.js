@@ -27,6 +27,9 @@ app.controller('UsuarioController', function(UsuarioService, EmpresaService, $st
 	vm.Gravar = function() {
 		UsuarioService.Gravar(vm.Usuario)
 		.then(function(res){
+			if (res.data._id) {
+				vm.Usuario = res.data
+			}
 		})
 	}
 

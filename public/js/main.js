@@ -45,6 +45,21 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider){
     controllerAs: 'vm'
   })
 
+  .state('menu.frmTipoServico', {
+    url: '/TipoServico/?_id',
+    params: { _id: null },
+    templateUrl: './views/frm_tipo_servico.html',
+    controller: 'TipoServicoController',
+    controllerAs: 'vm'
+  })
+
+  .state('menu.cnsTipoServico', {
+    url: '/TipoServico/Listar',
+    templateUrl: './views/cns_tipo_servico.html',
+    controller: 'TipoServicoController',
+    controllerAs: 'vm'
+  })
+
  $urlRouterProvider.otherwise('/home')
 
 })
