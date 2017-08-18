@@ -1,26 +1,31 @@
 'use strict'
 
-app.controller('PessoaController', function(PessoaService, EmpresaService, EnderecoService, UtilitarioService, $stateParams) {
+app.controller('PessoaController', function(PessoaService, EmpresaService, EnderecoService, UtilitarioService, $state, $stateParams) {
 
 	let vm = this
+
+	vm.IdPessoa = $stateParams._id;
 
 	vm.Pessoa   = {}
 	vm.Endereco = {}
 	vm.Pessoas  = []
 	vm.Empresas = []
 
-	if ( $stateParams._id ) {
+	// Caso passar o Id de uma Pessoa
+	if ( vm.IdPessoa ) {
 		let _id = $stateParams._id
 		PessoaService.ListarUm(_id)
 		.then(function(res){
 			vm.Pessoa = res.data
-			EnderecoService.Listar(_id)
-			.then(function(res){
-				vm.Endereco = res.data
-			})
+		})
+		EnderecoService.Listar(_id)
+		.then(function(ret){
+			vm.Endereco = ret.data
+		}
 		})
 	}
 
+	// Listar Pessoas
 	vm.Listar = function() {
 		PessoaService.Listar()
 		.then(function(res){
@@ -28,23 +33,15 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 		})
 	}
 
+	// Gravar Pessoa
 	vm.Gravar = function() {
 		PessoaService.Gravar(vm.Pessoa)
 		.then(function(res){
-			if (res.data._id) {
-				vm.Pessoa = res.data
-			}
-			// Grava o endereço
-			vm.Endereco._idPessoa = vm.Pessoa._id
-			EnderecoService.Gravar(vm.Endereco)
-			.then(function(res) {
-				if (res.data._id) {
-					vm.Endereco = res.data
-				}
-			})
+			$state.go('menu.frmPessoa', { _id: res.data._id })
 		})
 	}
 
+	// Listar Empresas
 	vm.ListarEmpresas = function() {
 		EmpresaService.Listar()
 		.then(function(res){
@@ -52,6 +49,18 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 		})
 	}
 
+	// Gravar Endereco
+	vm.GravarEndereco = function() {
+		vm.Endereco._idPessoa = vm.IdPessoa
+		EnderecoService.Gravar(vm.Endereco)
+		.then(function(res){
+			if(res.data._id){
+				vm.Endereco = res.data
+			}
+		})
+	}
+
+	// Consulta CEP
 	vm.ConsultarCEP = function() {
 		let cep = vm.Endereco.cep
 
