@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h4>Cadastro de Usuários</h4>
+				<hr>
+			</div>
+		</div>
+
+		<form name="form_empresa" onsubmit="return false">
+
+			<div class="row" data-ng-init="vm.ListarEmpresas()">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<label for="selEmpresa">Empresa</label>
+					<select class="form-control" id="selEmpresa" data-ng-options="empresa._id as empresa.nome_fantasia for empresa in vm.Empresas" data-ng-model="vm.Usuario._idEmpresa"></select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<label for="txtNomeFantasia">Nome Completo</label>
+					<input type="text" class="form-control" id="txtNomeFantasia" required="" data-ng-model="vm.Usuario.nome">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<label for="txtRazaoSocial">E-Mail</label>
+					<input type="text" class="form-control" id="txtRazaoSocial" required="" data-ng-model="vm.Usuario.email">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<label for="txtNomeFantasia">Login</label>
+					<input type="text" class="form-control" id="txtNomeFantasia" required="" data-ng-model="vm.Usuario.login">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<label for="txtRazaoSocial">Senha</label>
+					<input type="text" class="form-control" id="txtRazaoSocial" required="" data-ng-model="vm.Usuario.senha">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<hr>
+					<button type="button" class="btn btn-default" data-ng-click="vm.Gravar()">Gravar</button>
+					<button type="button" class="btn btn-default" data-ui-sref="menu.cnsUsuario">Voltar</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+</div>

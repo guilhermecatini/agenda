@@ -1,66 +1,40 @@
 'use strict'
 
-app.controller('UsuarioController', UsuarioController)
+app.controller('UsuarioController', function(UsuarioService, EmpresaService, $stateParams) {
 
-function UsuarioController($http, $stateParams) {
+	let vm = this
 
-  const vm = this
+	vm.Usuario  = {}
+	vm.Usuarios = []
+	vm.Empresas = []
 
-  vm.Usuarios = []
-  vm.Usuario = {}
+	if ( $stateParams._id ) {
+		let _id = $stateParams._id
+		UsuarioService.ListarUm(_id)
+		.then(function(res){
+			vm.Usuario = res.data
+		})
+	}
 
-  vm.Gravar = function() {
-    let url = '/api/v1/usuarios/create'
-    if ( $stateParams._id ) {
-      url = '/api/v1/usuarios/update'
-    }
-    $http({
-      method: 'POST',
-      url: url,
-      data: vm.Usuario
-    }).then(
-    function(retorno){
-      swal('Sucesso', 'Registro salvo.', 'success')
-    },
-    function(erro){
-      console.log(erro)
-      swal('Erro', 'Houve um erro ao executar esta ação. Contate o suporte.', 'error')
-    })
-  }
+	vm.Listar = function() {
+		UsuarioService.Listar()
+		.then(function(res){
+			console.log(res.data)
+			vm.Usuarios = res.data
+		})
+	}
 
-  vm.ListarUsuario = function() {
-    $http({
-      method: 'GET',
-      url: '/api/v1/usuarios/retrieve/' + $stateParams._id,
-      data: vm.Usuario
-    }).then(
-    function(retorno){
-      vm.Usuario = retorno.data
-    },
-    function(erro){
-      swal('Erro', 'Houve um erro ao executar esta ação. Contate o suporte.', 'error')
-    })
-  }
+	vm.Gravar = function() {
+		UsuarioService.Gravar(vm.Usuario)
+		.then(function(res){
+		})
+	}
 
-  vm.ListarUsuarios = function() {
-    $http({
-      method: 'GET',
-      url: '/api/v1/usuarios/retrieve',
-      data: vm.Usuario
-    }).then(
-    function(retorno){
-      vm.Usuarios = retorno.data
-    },
-    function(erro){
-      console.log(erro)
-      swal('Erro', 'Houve um erro ao executar esta ação. Contate o suporte.', 'error')
-    })
-  }
+	vm.ListarEmpresas = function() {
+		EmpresaService.Listar()
+		.then(function(res){
+			vm.Empresas = res.data
+		})
+	}
 
-
-  if ( $stateParams._id ) {
-    vm.ListarUsuario()
-  }
-
-
-}
+})

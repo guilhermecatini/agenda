@@ -30,6 +30,21 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider){
     controllerAs: 'vm'
   })
 
+  .state('menu.frmUsuario', {
+    url: '/Usuario/?_id',
+    params: { _id: null },
+    templateUrl: './views/frm_usuario.html',
+    controller: 'UsuarioController',
+    controllerAs: 'vm'
+  })
+
+  .state('menu.cnsUsuario', {
+    url: '/Usuario/Listar',
+    templateUrl: './views/cns_usuario.html',
+    controller: 'UsuarioController',
+    controllerAs: 'vm'
+  })
+
  $urlRouterProvider.otherwise('/home')
 
 })

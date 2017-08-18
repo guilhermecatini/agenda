@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h4>Relatório de Usuários</h4>
+				<hr>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<table class="table table-hover" data-ng-init="vm.Listar()">
+					<thead>
+						<tr>
+							<th>Nome Completo</th>
+							<th>E-Mail</th>
+							<th>Login</th>
+							<th>Empresa</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="cursor: pointer;" data-ng-repeat="usuario in vm.Usuarios" ui-sref="menu.frmUsuario({_id: usuario._id})">
+							<td>{{usuario.nome}}</td>
+							<td>{{usuario.email}}</td>
+							<td>{{usuario.login}}</td>
+							<td>{{usuario._idEmpresa.nome_fantasia}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<hr>
+				<button type="button" class="btn btn-default" data-ui-sref="menu.frmUsuario">Novo Cadastro</button>
+			</div>
+		</div>
+
+	</div>
+</div>
