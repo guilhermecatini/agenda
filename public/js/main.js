@@ -60,6 +60,21 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider){
     controllerAs: 'vm'
   })
 
+  .state('menu.frmPessoa', {
+    url: '/Pessoa/?_id',
+    params: { _id: null },
+    templateUrl: './views/frm_pessoa.html',
+    controller: 'PessoaController',
+    controllerAs: 'vm'
+  })
+
+  .state('menu.cnsPessoa', {
+    url: '/Pessoa/Listar',
+    templateUrl: './views/cns_pessoa.html',
+    controller: 'PessoaController',
+    controllerAs: 'vm'
+  })
+
  $urlRouterProvider.otherwise('/home')
 
 })

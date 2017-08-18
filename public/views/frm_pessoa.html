@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h4>Cadastro de Pessoas</h4>
+				<hr>
+			</div>
+		</div>
+
+		<form name="form_pessoa" onsubmit="return false">
+
+
+			<div class="row" data-ng-init="vm.ListarEmpresas()">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<label for="selEmpresa">Empresa</label>
+					<select class="form-control" id="selEmpresa" data-ng-options="empresa._id as empresa.nome_fantasia for empresa in vm.Empresas" data-ng-model="vm.Pessoa._idEmpresa"></select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<label for="txtNomeCompleto">Nome Completo</label>
+					<input type="text" class="form-control" id="txtNomeCompleto" required="" data-ng-model="vm.Pessoa.nome">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<label for="txtObservacao">Observação</label>
+					<textarea class="form-control" rows="7" id="txtObservacao" data-ng-model="vm.Pessoa.observacao"></textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<hr>
+					<button type="button" class="btn btn-default" data-ng-click="vm.Gravar()">Gravar</button>
+					<button type="button" class="btn btn-default" data-ui-sref="menu.cnsPessoa">Voltar</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+</div>

@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const _pessoaschema = {
+const _pessoaSchema = {
   
   _idEmpresa: {type: Schema.Types.ObjectId, ref:'empresa'},
   nome: String,
@@ -11,7 +11,7 @@ const _pessoaschema = {
   
 }
 
-const PessoaSchema = new Schema(_schema, { versionKey: false })
+const PessoaSchema = new Schema(_pessoaSchema, { versionKey: false })
 const PessoaModel = mongoose.model('pessoa', PessoaSchema)
 
 module.exports = PessoaModel
