@@ -15,11 +15,11 @@ const _enderecoSchema = {
   numero: Number,
   complemento: String,
   bairro: String,
-  cidade: String,
-  estado: String
+  localidade: String,
+  uf: String
 }
 
-const EnderecoSchema = new Schema(_schema, { versionKey: false })
+const EnderecoSchema = new Schema(_enderecoSchema, { versionKey: false })
 const EnderecoModel = mongoose.model('endereco', EnderecoSchema)
 
 module.exports = EnderecoModel

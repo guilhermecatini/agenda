@@ -1,11 +1,12 @@
 'use strict'
 
-app.controller('PessoaController', function(PessoaService, EmpresaService, $stateParams) {
+app.controller('PessoaController', function(PessoaService, EmpresaService, EnderecoService, UtilitarioService, $stateParams) {
 
 	let vm = this
 
-	vm.Pessoa  = {}
-	vm.Pessoas = []
+	vm.Pessoa   = {}
+	vm.Endereco = {}
+	vm.Pessoas  = []
 	vm.Empresas = []
 
 	if ( $stateParams._id ) {
@@ -13,6 +14,10 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, $stat
 		PessoaService.ListarUm(_id)
 		.then(function(res){
 			vm.Pessoa = res.data
+			EnderecoService.Listar(_id)
+			.then(function(res){
+				vm.Endereco = res.data
+			})
 		})
 	}
 
@@ -27,9 +32,16 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, $stat
 		PessoaService.Gravar(vm.Pessoa)
 		.then(function(res){
 			if (res.data._id) {
-				console.log(res.data)
 				vm.Pessoa = res.data
 			}
+			// Grava o endereço
+			vm.Endereco._idPessoa = vm.Pessoa._id
+			EnderecoService.Gravar(vm.Endereco)
+			.then(function(res) {
+				if (res.data._id) {
+					vm.Endereco = res.data
+				}
+			})
 		})
 	}
 
@@ -38,6 +50,21 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, $stat
 		.then(function(res){
 			vm.Empresas = res.data
 		})
+	}
+
+	vm.ConsultarCEP = function() {
+		let cep = vm.Endereco.cep
+
+		if (cep.length == 8) {
+			UtilitarioService.ConsultarCEP(vm.Endereco.cep)
+			.then(function(res){
+				if (!res.data.erro) {
+					res.data.cep = res.data.cep.replace(/[^0-9]/, '')
+					res.data._id = vm.Endereco._id
+					vm.Endereco = res.data
+				}
+			})
+		}
 	}
 
 })

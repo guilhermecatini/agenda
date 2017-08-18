@@ -19,7 +19,6 @@ app.controller('UsuarioController', function(UsuarioService, EmpresaService, $st
 	vm.Listar = function() {
 		UsuarioService.Listar()
 		.then(function(res){
-			console.log(res.data)
 			vm.Usuarios = res.data
 		})
 	}
