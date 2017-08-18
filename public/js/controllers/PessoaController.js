@@ -21,7 +21,6 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 		EnderecoService.Listar(_id)
 		.then(function(ret){
 			vm.Endereco = ret.data
-		}
 		})
 	}
 
