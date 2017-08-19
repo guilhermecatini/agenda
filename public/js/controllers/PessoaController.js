@@ -60,6 +60,7 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 			EnderecoService.Listar(vm.IdPessoa)
 			.then(function(ret){
 				vm.Enderecos = ret.data
+				$('.modal-novo-endereco').modal('hide')
 			})
 		})
 	}
