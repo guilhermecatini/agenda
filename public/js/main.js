@@ -1,9 +1,11 @@
 'use strict'
 
-const app = angular.module('AppAgenda', ['ui.router', 'ngMask'])
+const app = angular.module('AppAgenda', ['ui.router', 'angular-loading-bar', 'ngMask'])
 
 
-app.config(function($httpProvider, $stateProvider, $urlRouterProvider){
+app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadingBarProvider){
+
+  cfpLoadingBarProvider.includeSpinner = false
 
  $stateProvider
  .state('menu', {
