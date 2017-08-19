@@ -7,13 +7,18 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
 
   cfpLoadingBarProvider.includeSpinner = false
 
- $stateProvider
- .state('menu', {
+  $stateProvider
+  .state('login', {
+    url: '/Login',
+    templateUrl: './views/login.html'
+  })
+
+  .state('menu', {
     templateUrl: './views/menu.html'
   })
 
- .state('menu.home', {
-    url: '/home',
+  .state('menu.home', {
+    url: '/Home',
     templateUrl: './views/home.html'
   })
 
@@ -77,6 +82,6 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
     controllerAs: 'vm'
   })
 
- $urlRouterProvider.otherwise('/home')
+  $urlRouterProvider.otherwise('/Login')
 
 })
