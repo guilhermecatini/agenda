@@ -40,11 +40,4 @@ router.get('/Listar/:_id', (req, res) => {
   })
 })
 
-router.get('/Deletar/:_id', (req, res) => {
-  const query = { _id : req.params._id }
-  EmpresaModel.remove(query, (err, data) => {
-    callback(res, err, data)
-  })
-})
-
 module.exports = router

@@ -6,10 +6,11 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 
 	vm.IdPessoa = $stateParams._id;
 
-	vm.Pessoa   = {}
-	vm.Endereco = {}
-	vm.Pessoas  = []
-	vm.Empresas = []
+	vm.Pessoa    = {}
+	vm.Endereco  = {}
+	vm.Enderecos = []
+	vm.Pessoas   = []
+	vm.Empresas  = []
 
 	// Caso passar o Id de uma Pessoa
 	if ( vm.IdPessoa ) {
@@ -20,7 +21,7 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 		})
 		EnderecoService.Listar(_id)
 		.then(function(ret){
-			vm.Endereco = ret.data
+			vm.Enderecos = ret.data
 		})
 	}
 
@@ -56,20 +57,39 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 			if(res.data._id){
 				vm.Endereco = res.data
 			}
+			EnderecoService.Listar(vm.IdPessoa)
+			.then(function(ret){
+				vm.Enderecos = ret.data
+			})
 		})
 	}
+
+
+	vm.NovoEndereco = function() {
+		vm.Endereco = {}
+		$('.modal-novo-endereco').modal('show')
+	}
+
+	vm.AlterarEndereco = function(endereco) {
+		vm.Endereco = angular.copy(endereco)
+		$('.modal-novo-endereco').modal('show')
+	}
+
 
 	// Consulta CEP
 	vm.ConsultarCEP = function() {
 		let cep = vm.Endereco.cep
+		let idEndereco = vm.Endereco._id ? vm.Endereco._id : null
 
 		if (cep.length == 8) {
-			UtilitarioService.ConsultarCEP(vm.Endereco.cep)
+			UtilitarioService.ConsultarCEP(cep)
 			.then(function(res){
 				if (!res.data.erro) {
 					res.data.cep = res.data.cep.replace(/[^0-9]/, '')
-					res.data._id = vm.Endereco._id
-					vm.Endereco = res.data
+					vm.Endereco  = res.data
+					if (idEndereco) {
+						vm.Endereco._id = idEndereco
+					}
 				}
 			})
 		}

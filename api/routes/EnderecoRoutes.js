@@ -35,17 +35,17 @@ router.get('/Pessoa/Listar', (req, res) => {
 
 router.get('/Pessoa/Listar/:_idPessoa', (req, res) => {
   const query = { _idPessoa: req.params._idPessoa }
-  EnderecoModel.findOne(query, (err, data) => {
+  EnderecoModel.find(query, (err, data) => {
     callback(res, err, data)
   })
 })
 
-router.get('/Listar/:_id', (req, res) => {
-  let query = { _id : req.params._id }
-  EnderecoModel.findOne(query, (err, data) => {
-    callback(res, err, data)
-  })
-})
+
+
+
+
+
+
 
 router.get('/Deletar/:_id', (req, res) => {
   const query = { _id : req.params._id }

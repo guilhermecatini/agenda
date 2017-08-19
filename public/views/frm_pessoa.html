@@ -10,12 +10,10 @@
 
 		<form name="form_pessoa" onsubmit="return false">
 
-		
+			<tabs>
 
-  		<tabs>
-
-  			<pane title="Geral">
-	  			<div class="row" data-ng-init="vm.ListarEmpresas()">
+				<pane title="Geral">
+					<div class="row" data-ng-init="vm.ListarEmpresas()">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<label for="selEmpresa">Empresa</label>
 							<select class="form-control" id="selEmpresa" data-ng-options="empresa._id as empresa.nome_fantasia for empresa in vm.Empresas" data-ng-model="vm.Pessoa._idEmpresa"></select>
@@ -44,58 +42,129 @@
 						</div>
 					</div>
 
-  			</pane>
+				</pane>
 
-  			<pane title="Endereços" data-ng-if="vm.IdPessoa">
+				<pane title="Endereços" data-ng-if="vm.IdPessoa">
 
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-							<label for="txtCEP">CEP</label>
-							<input type="text" class="form-control" id="txtCEP" data-ng-blur="vm.ConsultarCEP()" data-ng-model="vm.Endereco.cep">
-						</div>
-					</div>
+					<div data-ng-repeat="endereco in vm.Enderecos">
 
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-							<label for="txtLogradouro">Rua / Avenida</label>
-							<input type="text" class="form-control" id="txtLogradouro" data-ng-model="vm.Endereco.logradouro">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<label for="txtCEP">CEP</label>
+								<input type="text" class="form-control" id="txtCEP" data-ng-model="endereco.cep" data-ng-readonly="true">
+							</div>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-							<label for="txtNumero">Número</label>
-							<input type="text" class="form-control" id="txtNumero" data-ng-model="vm.Endereco.numero">
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-							<label for="txtBairro">Bairro</label>
-							<input type="text" class="form-control" id="txtBairro" data-ng-model="vm.Endereco.bairro">
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-							<label for="txtLocalidade">Cidade</label>
-							<input type="text" class="form-control" id="txtLocalidade" data-ng-model="vm.Endereco.localidade">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<label for="txtLogradouro">Rua / Avenida</label>
+								<input type="text" class="form-control" id="txtLogradouro" data-ng-model="endereco.logradouro" data-ng-readonly="true">
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+								<label for="txtNumero">Número</label>
+								<input type="text" class="form-control" id="txtNumero" data-ng-model="endereco.numero" data-ng-readonly="true">
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<label for="txtBairro">Bairro</label>
+								<input type="text" class="form-control" id="txtBairro" data-ng-model="endereco.bairro" data-ng-readonly="true">
+							</div>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-							<label for="txtUf">UF</label>
-							<input type="text" class="form-control" id="txtUf" data-ng-model="vm.Endereco.uf">
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<label for="txtLocalidade">Cidade</label>
+								<input type="text" class="form-control" id="txtLocalidade" data-ng-model="endereco.localidade" data-ng-readonly="true">
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+								<label for="txtUf">UF</label>
+								<input type="text" class="form-control" id="txtUf" data-ng-model="endereco.uf" data-ng-readonly="true">
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<label for="txtComplemento">Complemento</label>
+								<input type="text" class="form-control" id="txtComplemento" data-ng-model="endereco.complemento" data-ng-readonly="true">
+							</div>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-							<label for="txtComplemento">Complemento</label>
-							<input type="text" class="form-control" id="txtComplemento" data-ng-model="vm.Endereco.complemento">
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<br>
+								<button type="button" class="btn btn-default" data-ng-click="vm.AlterarEndereco(endereco)">Alterar Endereço</button>
+								<hr>
+							</div>
 						</div>
+
 					</div>
 
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<hr>
-							<button type="button" class="btn btn-default" data-ng-click="vm.GravarEndereco()">Gravar</button>
+							<br>
+							<button type="button" class="btn btn-default" data-ng-click="vm.NovoEndereco()">Adicionar Endereço</button>
 							<button type="button" class="btn btn-default" data-ui-sref="menu.cnsPessoa">Voltar</button>
 						</div>
 					</div>
 
-  			</pane>
+				</pane>
 
-  		</tabs>
+			</tabs>
+
+			<!-- Modal Novo Endereço -->
+			<div class="modal fade modal-novo-endereco" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="exampleModalLabel">Novo Endereço</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+											<label for="txtCEP">CEP</label>
+											<input type="text" class="form-control" id="txtCEP" data-ng-blur="vm.ConsultarCEP()" data-ng-model="vm.Endereco.cep">
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<label for="txtLogradouro">Rua / Avenida</label>
+											<input type="text" class="form-control" id="txtLogradouro" data-ng-model="vm.Endereco.logradouro">
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+											<label for="txtNumero">Número</label>
+											<input type="text" class="form-control" id="txtNumero" data-ng-model="vm.Endereco.numero">
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+											<label for="txtBairro">Bairro</label>
+											<input type="text" class="form-control" id="txtBairro" data-ng-model="vm.Endereco.bairro">
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<label for="txtLocalidade">Cidade</label>
+											<input type="text" class="form-control" id="txtLocalidade" data-ng-model="vm.Endereco.localidade">
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+											<label for="txtUf">UF</label>
+											<input type="text" class="form-control" id="txtUf" data-ng-model="vm.Endereco.uf">
+										</div>
+										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+											<label for="txtComplemento">Complemento</label>
+											<input type="text" class="form-control" id="txtComplemento" data-ng-model="vm.Endereco.complemento">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-ng-click="vm.GravarEndereco()">Gravar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
 
 		</form>
 
