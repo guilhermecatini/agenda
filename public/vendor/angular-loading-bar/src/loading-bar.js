@@ -190,14 +190,6 @@ angular.module('cfp.loadingBar', [])
        * Inserts the loading bar element into the dom, and sets it to 2%
        */
       function _start() {
-
-        // Desabilita todos os botões da tela
-        let botoes = window.document.querySelectorAll('button')
-        botoes.forEach(function(el){
-          el.setAttribute('disabled', '')
-        })
-
-
         if (!$animate) {
           $animate = $injector.get('$animate');
         }
@@ -305,13 +297,6 @@ angular.module('cfp.loadingBar', [])
       }
 
       function _complete() {
-
-        // Habilita todos os botões da tela
-        let botoes = window.document.querySelectorAll('button')
-        botoes.forEach(function(el){
-          el.removeAttribute('disabled')
-        })
-
         if (!$animate) {
           $animate = $injector.get('$animate');
         }

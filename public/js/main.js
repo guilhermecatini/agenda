@@ -8,6 +8,8 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
 
   cfpLoadingBarProvider.includeSpinner = false
 
+  $urlRouterProvider.otherwise('/Login')
+
   $stateProvider
   .state('login', {
     url: '/Login',
@@ -86,7 +88,5 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
     controller: 'PessoaController',
     controllerAs: 'vm'
   })
-
-  $urlRouterProvider.otherwise('/Login')
 
 })
