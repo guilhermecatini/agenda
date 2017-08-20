@@ -10,11 +10,15 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
   $stateProvider
   .state('login', {
     url: '/Login',
-    templateUrl: './views/login.html'
+    templateUrl: './views/login.html',
+    controller: 'LoginController',
+    controllerAs: 'vm'
   })
 
   .state('menu', {
-    templateUrl: './views/menu.html'
+    templateUrl: './views/menu.html',
+    controller: 'MenuController',
+    controllerAs: 'vm'
   })
 
   .state('menu.home', {
@@ -23,7 +27,7 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
   })
 
   .state('menu.frmEmpresa', {
-    url: '/Empresa/?_id',
+    url: '/Empresa?_id',
     params: { _id: null },
     templateUrl: './views/frm_empresa.html',
     controller: 'EmpresaController',
@@ -38,7 +42,7 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
   })
 
   .state('menu.frmUsuario', {
-    url: '/Usuario/?_id',
+    url: '/Usuario?_id',
     params: { _id: null },
     templateUrl: './views/frm_usuario.html',
     controller: 'UsuarioController',
@@ -53,7 +57,7 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
   })
 
   .state('menu.frmTipoServico', {
-    url: '/TipoServico/?_id',
+    url: '/TipoServico?_id',
     params: { _id: null },
     templateUrl: './views/frm_tipo_servico.html',
     controller: 'TipoServicoController',
@@ -68,7 +72,7 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
   })
 
   .state('menu.frmPessoa', {
-    url: '/Pessoa/?_id',
+    url: '/Pessoa?_id',
     params: { _id: null },
     templateUrl: './views/frm_pessoa.html',
     controller: 'PessoaController',

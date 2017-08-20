@@ -9,6 +9,19 @@ function callback(res, err, data, status = 200) {
     return res.status(status).json(data)
 }
 
+router.post('/Login', (req, res) => {
+  const query = { login: req.body.login, senha: req.body.senha }
+  UsuarioModel.findOne(query, (err, data) => {
+    let objRet = {}
+    if (data) {
+      objRet = {
+        _idUsuario: data._id
+      }
+    }
+    callback(res, err, objRet, 200)
+  })
+})
+
 router.post('/Gravar', (req, res) => {
 
   const Usuario = req.body
