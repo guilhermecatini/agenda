@@ -5,8 +5,6 @@ app.controller('LoginController', function(LoginService, $stateParams, $state) {
 	let vm = this
 
 	vm.Usuario  = {}
-	vm.Usuario.login = 'guilherme.catini'
-	vm.Usuario.senha = '12341234'
 
 	vm.Login = function() {
 		vm.Usuario.login = vm.Usuario.login.toLowerCase()

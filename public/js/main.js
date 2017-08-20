@@ -2,8 +2,9 @@
 
 const app = angular.module('AppAgenda', ['ui.router', 'angular-loading-bar', 'ngMask'])
 
-
 app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadingBarProvider){
+
+  $httpProvider.interceptors.push('LoginInterceptor')
 
   cfpLoadingBarProvider.includeSpinner = false
 
