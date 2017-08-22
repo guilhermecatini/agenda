@@ -9,7 +9,8 @@ const _usuarioSchema = {
   email: String,
   nome: String,
   login: String,
-  senha: String
+  senha: String,
+  foto: String
 }
 
 const UsuarioSchema = new Schema(_usuarioSchema, { versionKey: false })

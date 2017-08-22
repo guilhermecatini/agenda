@@ -104,4 +104,11 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
     controllerAs: 'vm'
   })
 
+  .state('menu.frmPerfil', {
+    url: '/Perfil',
+    templateUrl: './views/frm_perfil.html',
+    controller: 'PerfilController',
+    controllerAs: 'vm'
+  })
+
 })

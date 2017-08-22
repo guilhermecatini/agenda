@@ -1,0 +1,67 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h4>Meu Perfil</h4>
+				<hr>
+			</div>
+		</div>
+
+		<form name="form_perfil" onsubmit="return false">
+
+			<input type="file" style="display: none;" id="foto_perfil">
+
+			<tabs>
+
+				<pane title="Geral">
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div style="width: 150px; height: 150px; margin: 10px 0 30px 0; text-align: center;">
+								<img style="width: 150px; height: 150px;" id="img_perfil" class="img img-thumbnail" data-ng-src="{{vm.Usuario.foto}}">
+								<a href="javascript:void(0)" onclick="$('#foto_perfil').trigger('click')">Alterar Foto</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<label for="txtNome">Nome</label>
+							<input type="text" id="txtNome" class="form-control" data-ng-model="vm.Usuario.nome">
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<label for="txtEmail">E-Mail</label>
+							<input type="text" id="txtEmail" class="form-control" data-ng-model="vm.Usuario.email">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<label for="txtLogin">Login</label>
+							<input type="text" id="txtLogin" class="form-control" data-ng-readonly="true" data-ng-model="vm.Usuario.login">
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<label for="txtSenha">Senha</label>
+							<input type="text" id="txtSenha" class="form-control" data-ng-model="vm.Usuario.senha">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<hr>
+							<button type="button" class="btn btn-default" data-ng-click="vm.Gravar()">Gravar</button>
+							<button type="button" class="btn btn-default" data-ui-sref="menu.home">Voltar</button>
+						</div>
+					</div>
+
+				</pane>
+
+			</tabs>
+
+		</form>
+
+	</div>
+</div>
