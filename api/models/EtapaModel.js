@@ -11,7 +11,7 @@ const _etapaSchema = {
   observacao: String
 }
 
-const EtapaSchema = new Schema(_schema, { versionKey: false })
+const EtapaSchema = new Schema(_etapaSchema, { versionKey: false })
 const EtapaModel = mongoose.model('etapa', EtapaSchema)
 
 module.exports = EtapaModel

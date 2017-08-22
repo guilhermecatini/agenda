@@ -1,0 +1,12 @@
+1- Criar a rota do modelo
+   alterar nomes de variaveis e objetos
+
+2- Adicionar essas rotas no EXPRESS /app.js
+   Clonar linhas já existentes, e alterar o que for necessário
+
+3- Criar os arquivos necessários para usar o front-end
+   - alterar as variaveis necessarias
+   - alterar os nomes de objetos e array necessarios
+   - criar os links no menu ( menu.html)
+   - criar as rotas do site ( main.js )
+   - referenciar os novos arquivos ( controller e service, no index.html )
