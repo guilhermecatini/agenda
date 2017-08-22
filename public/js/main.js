@@ -104,4 +104,18 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
     controllerAs: 'vm'
   })
 
+  .state('menu.frmEtapa', {
+    url: '/Etapa?_id',
+    params: { _id: null },
+    templateUrl: './views/frm_etapa.html',
+    controller: 'EtapaController',
+    controllerAs: 'vm'
+  })
+
+  .state('menu.cnsEtapa', {
+    url: '/Etapa/Listar',
+    templateUrl: './views/cns_etapa.html',
+    controller: 'EtapaController',
+    controllerAs: 'vm'
+  })
 })
