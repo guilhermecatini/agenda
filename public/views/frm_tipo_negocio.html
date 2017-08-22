@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h4>Cadastro de Tipo de Negócio</h4>
+				<hr>
+			</div>
+		</div>
+
+		<form name="form_tipo_negocio" onsubmit="return false">
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<label for="txtDescricao">Descrição</label>
+					<input type="text" class="form-control" id="txtDescricao" required="" data-ng-model="vm.TipoNegocio.descricao">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<hr>
+					<button type="button" class="btn btn-default" data-ng-click="vm.Gravar()">Gravar</button>
+					<button type="button" class="btn btn-default" data-ui-sref="menu.cnsTipoNegocio">Voltar</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+</div>

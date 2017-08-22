@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h4>Relatório de Tipo de Negócio</h4>
+				<hr>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<table class="table table-hover" data-ng-init="vm.Listar()">
+					<thead>
+						<tr>
+							<th>Descrição</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="cursor: pointer;" data-ng-repeat="tiponegocio in vm.TipoNegocios" ui-sref="menu.frmTipoNegocio({_id: tiponegocio._id})">
+							<td>{{tiponegocio.descricao}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<hr>
+				<button type="button" class="btn btn-default" data-ui-sref="menu.frmTipoNegocio">Novo Cadastro</button>
+			</div>
+		</div>
+
+	</div>
+</div>

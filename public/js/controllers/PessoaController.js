@@ -37,7 +37,10 @@ app.controller('PessoaController', function(PessoaService, EmpresaService, Ender
 	vm.Gravar = function() {
 		PessoaService.Gravar(vm.Pessoa)
 		.then(function(res){
-			$state.go('menu.frmPessoa', { _id: res.data._id })
+			if ( res.data._id ) {
+				$state.go('menu.frmPessoa', { _id: res.data._id })
+			}
+			swal('Sucesso', '', 'success')
 		})
 	}
 

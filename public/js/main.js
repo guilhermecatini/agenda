@@ -4,7 +4,7 @@ const app = angular.module('AppAgenda', ['ui.router', 'angular-loading-bar', 'ng
 
 app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadingBarProvider){
 
-  $httpProvider.interceptors.push('LoginInterceptor')
+  //$httpProvider.interceptors.push('LoginInterceptor')
 
   cfpLoadingBarProvider.includeSpinner = false
 
@@ -86,6 +86,21 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
     url: '/Pessoa/Listar',
     templateUrl: './views/cns_pessoa.html',
     controller: 'PessoaController',
+    controllerAs: 'vm'
+  })
+
+  .state('menu.frmTipoNegocio', {
+    url: '/TipoNegocio?_id',
+    params: { _id: null },
+    templateUrl: './views/frm_tipo_negocio.html',
+    controller: 'TipoNegocioController',
+    controllerAs: 'vm'
+  })
+
+  .state('menu.cnsTipoNegocio', {
+    url: '/TipoNegocio/Listar',
+    templateUrl: './views/cns_tipo_negocio.html',
+    controller: 'TipoNegocioController',
     controllerAs: 'vm'
   })
 
