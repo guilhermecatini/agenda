@@ -26,7 +26,9 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider, cfpLoadin
 
   .state('menu.home', {
     url: '/Home',
-    templateUrl: './views/home.html'
+    templateUrl: './views/home.html',
+    controller: 'HomeController',
+    controllerAs: 'vm'
   })
 
   .state('menu.frmEmpresa', {
