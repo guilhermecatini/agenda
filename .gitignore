@@ -1,1 +1,4 @@
 public/files/upload/*
+
+# exception to the rule
+!public/files/upload/.gitkeep 
