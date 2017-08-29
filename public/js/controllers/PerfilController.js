@@ -19,6 +19,22 @@ app.controller('PerfilController', function(PerfilService, UsuarioService, $stat
 	vm.SalvarImagem = function() {
 		let imgData = $('#imgTmp').cropper('getCroppedCanvas').toDataURL('image/jpeg').split(',')[1]
 		$('button[type=button]').attr('disabled', '')
+		
+		$.ajax({
+			method: 'POST',
+			url: '/api/v1/Files/Upload',
+			data: {
+				base64: imgData,
+				extension: 'jpeg'
+			}
+		}).done(function(response){
+			$('#img_perfil').attr('src', response.link)
+			$('.modal-foto').modal('hide')
+			vm.Gravar()
+			$('button[type=button]').removeAttr('disabled')
+		})
+		
+		/*
 		$.ajax({
 			method: 'POST',
 			url: 'https://api.imgur.com/3/image',
@@ -34,6 +50,8 @@ app.controller('PerfilController', function(PerfilService, UsuarioService, $stat
 			vm.Gravar()
 			$('button[type=button]').removeAttr('disabled')
 		})
+	*/
+
 	}
 
 	// Lista os dados do usuário
